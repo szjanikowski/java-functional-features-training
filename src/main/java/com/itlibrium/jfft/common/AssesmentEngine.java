@@ -55,6 +55,29 @@ public class AssesmentEngine {
         """
     };
 
+    public static final String[] B3_LAMBDAS_CLOSURES_RECORDS = {
+        """
+          Lambdas and Closures
+           - I know what is lambda and how it takes references variables from the context as a Closure
+           - I know what are differences between lambdas and anonymous inner classes
+           - I know when compiler protects me against mutable closures and when it doesn't
+        """,
+        """
+          Records
+           - I know syntax of records and how to use them
+           - I know which code is auto generated for me when I use the records
+           - I know the inheritance rules regarding the records
+           - I am aware of use cases when the records fit best
+        """,
+        """
+          Default and Static methods in the interfaces
+            - I am aware that interfaces may have methods
+            - I know what are the rules regarding these methods
+            - I know examples of these kind of methods from the standard library
+        """
+    };
+
+
     public static int assessSection(Scanner scanner, String sectionName, String[] topics) {
         int sectionPoints = 0;
         System.out.println("\nSection: " + sectionName);
