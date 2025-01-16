@@ -10,13 +10,7 @@ class B1E1GenericMethods {
             result.setData("Operation successful");
             result.setResultCode(0);
         } catch (Exception e) {
-            //FIXME: remove duplication
-            if (e instanceof IllegalArgumentException) {
-                result.setResultCode(2);
-            } else {
-                result.setResultCode(1);
-            }
-            return result;
+            return getGenericResult(e, result);
         }
         return result;
     }
@@ -27,13 +21,16 @@ class B1E1GenericMethods {
             // Simulate another operation
             result.setResultCode(0);
         } catch (Exception e) {
-            //FIXME: remove duplication
-            if (e instanceof IllegalArgumentException) {
-                result.setResultCode(2);
-            } else {
-                result.setResultCode(1);
-            }
-            return result;
+            return getGenericResult(e, result);
+        }
+        return result;
+    }
+
+    private static <T extends GenericResult> T getGenericResult(Exception e, T result) {
+        if (e instanceof IllegalArgumentException) {
+            result.setResultCode(2);
+        } else {
+            result.setResultCode(1);
         }
         return result;
     }

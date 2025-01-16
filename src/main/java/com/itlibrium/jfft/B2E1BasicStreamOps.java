@@ -11,6 +11,8 @@ public class B2E1BasicStreamOps {
      */
     public static List<Integer> task1(List<Integer> numbers) {
         return numbers.stream()
+            .map(n -> n*n)
+            .filter(n -> n >= 10 )
             .toList();
     }
 
@@ -21,6 +23,8 @@ public class B2E1BasicStreamOps {
      */
     public static List<Integer> task2(List<Integer> numbers) {
         return numbers.stream()
+            .filter(n -> Math.abs(n) >= 4 && Math.abs(n) <= 9)
+            .map(B2E1BasicStreamOps::costlySquaring)
             .toList();
     }
 
@@ -40,8 +44,8 @@ public class B2E1BasicStreamOps {
      * Verification: Input: ["apple", "banana", "cherry", "date"], Expected Output: true for any containing 'a', true for all length > 3
      */
     public static Task3Result task3(List<String> words) {
-        boolean anyContainsA = false;
-        boolean allLengthGreaterThanThree = false;
+        boolean anyContainsA = words.stream().anyMatch(word -> word.contains("a"));
+        boolean allLengthGreaterThanThree = words.stream().allMatch(word -> word.length() > 3);
         return new Task3Result(anyContainsA, allLengthGreaterThanThree);
     }
 
@@ -54,6 +58,6 @@ public class B2E1BasicStreamOps {
      * Verification: Input: [-1, 4, 9, 16, 25], Expected Output: true
      */
     public static boolean task4(List<Integer> numbers) {
-        return false;
+        return numbers.stream().filter(n -> n >= 0).map(Math::sqrt).noneMatch(n -> n < 2);
     }
 }
